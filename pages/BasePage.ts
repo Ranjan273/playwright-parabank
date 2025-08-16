@@ -2,6 +2,7 @@
 import { Page } from '@playwright/test';
 
 export class BasePage {
+  
   readonly page: Page;
 
   constructor(page: Page) {
@@ -10,5 +11,9 @@ export class BasePage {
 
   async navigate(path: string) {
     await this.page.goto(path);
+  }
+  // Tear down method to close the page/browser
+  async tearDown() {
+    await this.page.close();
   }
 }
